@@ -1,30 +1,25 @@
-import { Component } from 'react';
 import Main from './Phonebook.styled';
 import InputName from './Input/InputName/InputName';
 import LabelPhoneBook from './Label/Label';
-import ButtonSubmit from './ButtonSubmit/ButtonSubmit';
+import ButtonSubmit from './Button/ButtonSubmit';
+import Contacts from './Contacts/Contacts';
 
-class Phonebook extends Component {
-  state = {
-    contacts: [],
-    name: '',
-    number: '',
-  };
+const Phonebook = ({
+  onChange,
+  onSubmit,
+  valueName,
+  contactsList,
+  notEmptyList,
+}) => {
+  return (
+    <Main>
+      <form onSubmit={onSubmit}>
+        <LabelPhoneBook title="Name">
+          <InputName value={valueName} onChange={onChange} />
+        </LabelPhoneBook>
+        <ButtonSubmit text="Add contact" />
 
-  handleChange = e => {
-    console.log('sss');
-  };
-
-  render() {
-    return (
-      <Main>
-        <form onSubmit={this.handleChange}>
-          <LabelPhoneBook title="Name">
-            <InputName />
-          </LabelPhoneBook>
-          <ButtonSubmit text="Add contact" />
-
-          {/* <Label>
+        {/* <Label>
             Number
             <Input
               type="tel"
@@ -35,10 +30,14 @@ class Phonebook extends Component {
               placeholder="000-00-00"
             />
           </Label> */}
-        </form>
-      </Main>
-    );
-  }
-}
+      </form>
+      {notEmptyList > 0 ? (
+        <Contacts name="Contacts" contactsList={contactsList} />
+      ) : (
+        'Phonebook empty'
+      )}
+    </Main>
+  );
+};
 
 export default Phonebook;

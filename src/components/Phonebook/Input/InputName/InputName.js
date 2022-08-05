@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../Input.styled';
 
-const InputName = ({ handleChange }) => (
+const InputName = ({ onChange, value }) => (
   <Input
     type="text"
     name="name"
@@ -9,8 +9,10 @@ const InputName = ({ handleChange }) => (
     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     required
     placeholder="Enter name"
-    onChange={handleChange}
+    onChange={onChange}
+    value={value}
+    name="name"
   />
 );
 
-export default InputName
+export default InputName;
