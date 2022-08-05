@@ -6,6 +6,10 @@ const Input = styled.input`
   height: 30px;
 
   font-size: 24px;
+
+  & ~ p {
+    font-size: 14px;
+  }
 `;
 
 export default Input;

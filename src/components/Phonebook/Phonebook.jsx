@@ -2,7 +2,7 @@ import InputName from './Input/InputName/InputName';
 import LabelPhoneBook from './Label/Label';
 import ButtonSubmit from './Button/ButtonSubmit';
 import Contacts from './Contacts/Contacts';
-import InputNumber from './Input/InputName/inputNumber';
+import InputNumber from './Input/InputNumber/inputNumber';
 import FormPhonebook from './Form/Form';
 
 const Phonebook = ({
@@ -12,6 +12,7 @@ const Phonebook = ({
   valueNumber,
   contactsList,
   notEmptyList,
+  valueFilter,
 }) => {
   return (
     <>
@@ -37,7 +38,12 @@ const Phonebook = ({
           </Label> */}
       </FormPhonebook>
       {notEmptyList > 0 ? (
-        <Contacts name="Contacts" contactsList={contactsList} />
+        <Contacts
+          name="Contacts"
+          contactsList={contactsList}
+          onChange={onChange}
+          value={valueFilter}
+        />
       ) : (
         <p>Phonebook empty</p>
       )}
