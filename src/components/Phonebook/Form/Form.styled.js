@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
-const Main = styled.div`
+const Form = styled.form`
   padding: 15px 10px;
   width: 500px;
-  min-height: 400px;
   border: 5px solid black;
   border-radius: 10px;
 
@@ -11,4 +10,4 @@ const Main = styled.div`
   flex-direction: column;
 `;
 
-export default Main;
+export default Form;

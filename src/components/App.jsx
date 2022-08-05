@@ -1,7 +1,7 @@
 import Phonebook from './Phonebook/Phonebook';
 import { Component } from 'react';
-import { toHaveAccessibleDescription } from '@testing-library/jest-dom/dist/matchers';
 import { nanoid } from 'nanoid/non-secure';
+import Main from './Main/Main';
 
 class App extends Component {
   state = {
@@ -37,16 +37,7 @@ class App extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
+      <Main title="Phonebook">
         <Phonebook
           onChange={this.handleChange}
           onSubmit={this.clickOnBtnSubmit}
@@ -56,7 +47,7 @@ class App extends Component {
           valueName={this.state.name}
           valueNumber={this.state.number}
         />
-      </div>
+      </Main>
     );
   }
 }

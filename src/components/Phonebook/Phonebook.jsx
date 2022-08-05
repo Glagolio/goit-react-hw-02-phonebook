@@ -1,9 +1,9 @@
-import Main from './Phonebook.styled';
 import InputName from './Input/InputName/InputName';
 import LabelPhoneBook from './Label/Label';
 import ButtonSubmit from './Button/ButtonSubmit';
 import Contacts from './Contacts/Contacts';
 import InputNumber from './Input/InputName/inputNumber';
+import FormPhonebook from './Form/Form';
 
 const Phonebook = ({
   onChange,
@@ -14,8 +14,8 @@ const Phonebook = ({
   notEmptyList,
 }) => {
   return (
-    <Main>
-      <form onSubmit={onSubmit}>
+    <>
+      <FormPhonebook onSubmit={onSubmit}>
         <LabelPhoneBook title="Name">
           <InputName value={valueName} onChange={onChange} />
         </LabelPhoneBook>
@@ -35,13 +35,13 @@ const Phonebook = ({
               placeholder="000-00-00"
             />
           </Label> */}
-      </form>
+      </FormPhonebook>
       {notEmptyList > 0 ? (
         <Contacts name="Contacts" contactsList={contactsList} />
       ) : (
         <p>Phonebook empty</p>
       )}
-    </Main>
+    </>
   );
 };
 
