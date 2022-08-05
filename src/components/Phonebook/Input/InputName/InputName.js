@@ -11,7 +11,6 @@ const InputName = ({ onChange, value }) => (
     placeholder="Enter name"
     onChange={onChange}
     value={value}
-    name="name"
   />
 );
 

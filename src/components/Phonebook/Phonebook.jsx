@@ -3,11 +3,13 @@ import InputName from './Input/InputName/InputName';
 import LabelPhoneBook from './Label/Label';
 import ButtonSubmit from './Button/ButtonSubmit';
 import Contacts from './Contacts/Contacts';
+import InputNumber from './Input/InputName/inputNumber';
 
 const Phonebook = ({
   onChange,
   onSubmit,
   valueName,
+  valueNumber,
   contactsList,
   notEmptyList,
 }) => {
@@ -16,6 +18,9 @@ const Phonebook = ({
       <form onSubmit={onSubmit}>
         <LabelPhoneBook title="Name">
           <InputName value={valueName} onChange={onChange} />
+        </LabelPhoneBook>
+        <LabelPhoneBook title="Number">
+          <InputNumber value={valueNumber} onChange={onChange} />
         </LabelPhoneBook>
         <ButtonSubmit text="Add contact" />
 
@@ -34,7 +39,7 @@ const Phonebook = ({
       {notEmptyList > 0 ? (
         <Contacts name="Contacts" contactsList={contactsList} />
       ) : (
-        'Phonebook empty'
+        <p>Phonebook empty</p>
       )}
     </Main>
   );

@@ -23,11 +23,13 @@ class App extends Component {
 
   clickOnBtnSubmit = e => {
     e.preventDefault();
-    // this.setState(prevState => {
-    //   contacts: prevState.contacts.push({ name: prevState.name });
-    // });
+
     const id = nanoid();
-    this.state.contacts.push({ name: this.state.name, id: id });
+    this.state.contacts.push({
+      name: this.state.name,
+      number: this.state.number,
+      id: id,
+    });
     console.dir(this.state.contacts);
 
     this.reset();
@@ -52,6 +54,7 @@ class App extends Component {
           contactsList={this.state.contacts}
           notEmptyList={this.state.contacts.length}
           valueName={this.state.name}
+          valueNumber={this.state.number}
         />
       </div>
     );
