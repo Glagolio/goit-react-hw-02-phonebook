@@ -7,12 +7,7 @@ import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
 
     filter: '',
   };
@@ -26,6 +21,13 @@ class App extends Component {
 
   formSubmitHandle = data => {
     const id = nanoid();
+    if (
+      this.state.contacts.filter(contact => contact.name === data.name).length >
+      0
+    ) {
+      alert(`${data.name} is already in contacts`);
+      return;
+    }
     this.setState({
       contacts: [
         ...this.state.contacts,
@@ -35,6 +37,14 @@ class App extends Component {
           id: id,
         },
       ],
+    });
+  };
+
+  onClickDelete = e => {
+    this.setState({
+      contacts: this.state.contacts.filter(
+        contact => contact.id !== e.currentTarget.id
+      ),
     });
   };
 
@@ -58,6 +68,7 @@ class App extends Component {
             contactsList={visibleContacts}
             onChange={this.handleChange}
             value={this.state.filter}
+            onClickDelete={this.onClickDelete}
           />
         ) : (
           <p>Phonebook empty</p>

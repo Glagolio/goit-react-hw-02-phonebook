@@ -10,6 +10,7 @@ const Button = styled.button`
   color: white;
   border: 2px solid black;
   border-radius: 2%;
+  cursor: pointer;
 
   transition: color 250ms linear, background-color 250ms linear;
 
