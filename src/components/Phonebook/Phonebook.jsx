@@ -44,17 +44,6 @@ class Phonebook extends Component {
           </LabelPhoneBook>
           <ButtonSubmit text="Add contact" />
         </FormPhonebook>
-        {this.props.notEmptyList > 0 ? (
-          <Contacts
-            name="Contacts"
-            contactsList={this.props.contactsList}
-            onChange={this.props.onChange}
-            value={this.props.valueFilter}
-            valueFilter={this.props.valueFilter}
-          />
-        ) : (
-          <p>Phonebook empty</p>
-        )}
       </>
     );
   }

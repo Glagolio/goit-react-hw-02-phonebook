@@ -2,6 +2,8 @@ import Phonebook from './Phonebook/Phonebook';
 import { Component } from 'react';
 import { nanoid } from 'nanoid/non-secure';
 import Main from './Main/Main';
+import Contacts from './Phonebook/Contacts/Contacts';
+import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 class App extends Component {
   state = {
@@ -24,10 +26,15 @@ class App extends Component {
 
   formSubmitHandle = data => {
     const id = nanoid();
-    this.state.contacts.push({
-      name: data.name,
-      number: data.number,
-      id: id,
+    this.setState({
+      contacts: [
+        ...this.state.contacts,
+        {
+          name: data.name,
+          number: data.number,
+          id: id,
+        },
+      ],
     });
   };
 
@@ -45,6 +52,16 @@ class App extends Component {
           notEmptyList={this.state.contacts.length}
           valueFilter={this.state.filter}
         />
+        {this.state.contacts.length > 0 ? (
+          <Contacts
+            name="Contacts"
+            contactsList={visibleContacts}
+            onChange={this.handleChange}
+            value={this.state.filter}
+          />
+        ) : (
+          <p>Phonebook empty</p>
+        )}
       </Main>
     );
   }

@@ -5,7 +5,6 @@ const MainPage = styled.div`
   margin-right: auto;
   margin-top: 20px;
   width: 500px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
