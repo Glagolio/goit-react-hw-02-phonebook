@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import InputName from './Input/InputName/InputName';
 import LabelPhoneBook from './Label/Label';
 import ButtonSubmit from './Button/ButtonSubmit';
@@ -5,50 +6,58 @@ import Contacts from './Contacts/Contacts';
 import InputNumber from './Input/InputNumber/inputNumber';
 import FormPhonebook from './Form/Form';
 
-const Phonebook = ({
-  onChange,
-  onSubmit,
-  valueName,
-  valueNumber,
-  contactsList,
-  notEmptyList,
-  valueFilter,
-}) => {
-  return (
-    <>
-      <FormPhonebook onSubmit={onSubmit}>
-        <LabelPhoneBook title="Name">
-          <InputName value={valueName} onChange={onChange} />
-        </LabelPhoneBook>
-        <LabelPhoneBook title="Number">
-          <InputNumber value={valueNumber} onChange={onChange} />
-        </LabelPhoneBook>
-        <ButtonSubmit text="Add contact" />
+class Phonebook extends Component {
+  state = {
+    name: '',
+    number: '',
+  };
 
-        {/* <Label>
-            Number
-            <Input
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-              placeholder="000-00-00"
+  handleChange = e => {
+    const { name, value } = e.currentTarget;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  reset = () => {
+    this.setState({ name: '', number: '' });
+  };
+
+  clickOnBtnSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    this.reset();
+  };
+
+  render() {
+    return (
+      <>
+        <FormPhonebook onSubmit={this.clickOnBtnSubmit}>
+          <LabelPhoneBook title="Name">
+            <InputName value={this.state.name} onChange={this.handleChange} />
+          </LabelPhoneBook>
+          <LabelPhoneBook title="Number">
+            <InputNumber
+              value={this.state.number}
+              onChange={this.handleChange}
             />
-          </Label> */}
-      </FormPhonebook>
-      {notEmptyList > 0 ? (
-        <Contacts
-          name="Contacts"
-          contactsList={contactsList}
-          onChange={onChange}
-          value={valueFilter}
-        />
-      ) : (
-        <p>Phonebook empty</p>
-      )}
-    </>
-  );
-};
+          </LabelPhoneBook>
+          <ButtonSubmit text="Add contact" />
+        </FormPhonebook>
+        {this.props.notEmptyList > 0 ? (
+          <Contacts
+            name="Contacts"
+            contactsList={this.props.contactsList}
+            onChange={this.props.onChange}
+            value={this.props.valueFilter}
+            valueFilter={this.props.valueFilter}
+          />
+        ) : (
+          <p>Phonebook empty</p>
+        )}
+      </>
+    );
+  }
+}
 
 export default Phonebook;

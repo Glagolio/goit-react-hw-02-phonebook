@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const MainPage = styled.div`
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
   width: 500px;
   height: 100vh;
   display: flex;
@@ -11,7 +12,7 @@ const MainPage = styled.div`
   font-size: 40px;
   color: #010101;
 
-  & h2 {
+  & h1 {
     font-size: 48px;
     margin: 0 0 10px 0;
   }

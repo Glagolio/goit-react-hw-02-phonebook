@@ -7,10 +7,7 @@ const Contacts = ({ name, contactsList, onChange, value }) => (
   <ContactsItem>
     <p>{name}</p>
     <LabelFilter title="Find contacts by name">
-      <InputFilter
-        onChange={onChange}
-        value={value}
-      />
+      <InputFilter onChange={onChange} value={value} />
     </LabelFilter>
     <ul>
       {contactsList.map(contact => (

@@ -3,7 +3,7 @@ import MainPage from './Main.styled';
 
 const Main = ({ title, children }) => (
   <MainPage>
-    <h2>{title}</h2>
+    <h1>{title}</h1>
     {children}
   </MainPage>
 );
