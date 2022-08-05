@@ -2,7 +2,6 @@ import { Component } from 'react';
 import InputName from './Input/InputName/InputName';
 import LabelPhoneBook from './Label/Label';
 import ButtonSubmit from './Button/ButtonSubmit';
-import Contacts from './Contacts/Contacts';
 import InputNumber from './Input/InputNumber/inputNumber';
 import FormPhonebook from './Form/Form';
 

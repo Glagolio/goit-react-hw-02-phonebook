@@ -1,5 +1,6 @@
 import React from 'react';
 import MainPage from './Main.styled';
+import PropTypes from 'prop-types';
 
 const Main = ({ title, children }) => (
   <MainPage>
@@ -9,3 +10,7 @@ const Main = ({ title, children }) => (
 );
 
 export default Main;
+
+Main.propTypes = {
+  title: PropTypes.string.isRequired,
+};

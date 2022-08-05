@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid/non-secure';
 import Main from './Main/Main';
 import Contacts from './Phonebook/Contacts/Contacts';
-import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 class App extends Component {
   state = {

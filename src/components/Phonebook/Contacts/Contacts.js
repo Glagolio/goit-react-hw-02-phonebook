@@ -3,6 +3,7 @@ import ContactsItem from './Contacts.styled';
 import InputFilter from '../Input/InputFilter/inputFilter';
 import LabelFilter from '../Label/LabelFilter/LabelFilter';
 import ButtonDelete from '../Button/ButtonDelete/ButtonDelete';
+import PropTypes from 'prop-types';
 
 const Contacts = ({ name, contactsList, onChange, value, onClickDelete }) => (
   <ContactsItem>
@@ -28,3 +29,10 @@ const Contacts = ({ name, contactsList, onChange, value, onClickDelete }) => (
 );
 
 export default Contacts;
+
+Contacts.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  contactsList: PropTypes.arrayOf(PropTypes.string),
+};
