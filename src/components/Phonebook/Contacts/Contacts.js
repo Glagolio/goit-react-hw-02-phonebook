@@ -19,7 +19,7 @@ const Contacts = ({ name, contactsList, onChange, value, onClickDelete }) => (
           </span>
           <ButtonDelete
             name="Delete"
-            onClickDelete={onClickDelete}
+            onClickDelete={() => onClickDelete(contact.id)}
             id={contact.id}
           />
         </li>
@@ -34,5 +34,11 @@ Contacts.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onClickDelete: PropTypes.func.isRequired,
-  contactsList: PropTypes.arrayOf(PropTypes.string),
+  contactsList: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
 };

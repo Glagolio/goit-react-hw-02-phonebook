@@ -39,11 +39,9 @@ class App extends Component {
     });
   };
 
-  onClickDelete = e => {
+  onClickDelete = id => {
     this.setState({
-      contacts: this.state.contacts.filter(
-        contact => contact.id !== e.currentTarget.id
-      ),
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
     });
   };
 
